@@ -1,0 +1,37 @@
+{% extends 'firstapp/homepage.html' %}
+{% block body_block %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <title>History of quiz : Trivia App</title>
+  </head>
+  <body>
+    <center><br><br>
+      <div class="container card card-body bg-light col-8">
+        <div class="jumbotron" id="formjumbo">
+      <h1>History of Quizzzzz</h1>
+      <br>{% if historydata %}
+        {% for data in historydata %}
+          <hr>
+          <h4>Game {{data.id}}:  On - {{data.created}}</h4>
+          <ul style="font-size:25px;">
+            <li>Name : {{data.name|title}}</li>
+            <li>Who is the best cricketer in the world ?</li>
+            <h5>Answer : {{data.cricketer_name}}</h5>
+            <li>What are he colors present in indian national flag ?</li>
+            <table >
+              <tr>
+                <td><p>Answer : </p></td>
+                <td>{% if data.white == True %}<p>white,</p>{% endif %}</td>
+                <td>{% if data.yellow == True %}<p>yellow,</p>{% endif %}</td>
+                <td>{% if data.green == True %}<p>green,</p>{% endif %}</td>
+                <td>{% if data.orange == True %}<p>orange</p>{% endif %}</td>
+              </tr>
+            </table>
+          </ul>
+        {% endfor %}
+      {% endif %}
+      </div>
+      </div>
+  </body>
+  {% endblock %}
